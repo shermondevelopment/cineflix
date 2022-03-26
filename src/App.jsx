@@ -1,13 +1,15 @@
 import React from 'react'
-import AppCineProvider from './contexts/AppContext'
+
+/* Router */
+import { Routes, Route } from 'react-router-dom'
 
 /* Pages */
 import Home from './pages/Home'
 
 export const App = () => {
   return (
-    <AppCineProvider>
-      <Home />
-    </AppCineProvider>
+    <Routes>
+      <Route path="/" element={Home} />
+    </Routes>
   )
 }
