@@ -1,5 +1,13 @@
 import React from 'react'
+import AppCineProvider from './contexts/AppContext'
+
+/* Pages */
+import Home from './pages/Home'
 
 export const App = () => {
-  return <h2>Com assim</h2>
+  return (
+    <AppCineProvider>
+      <Home />
+    </AppCineProvider>
+  )
 }
