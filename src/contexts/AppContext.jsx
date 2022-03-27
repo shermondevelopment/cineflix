@@ -1,24 +1,21 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import { createContext } from 'react'
+import { useReducerMovie, initialState } from '../reducers/reducer'
 
-const AppState = {
-  movie: {
-    title: 'Dracula',
-    hours: '',
-    date: '',
-  },
-  tickets: [13, 23],
-  client: {
-    name: '',
-    cpf: '',
-  },
-}
+export const AppCineFlixContext = createContext({
+  state: initialState,
+  dispatch: () => null,
+})
 
-export const AppCineFlixContext = createContext(AppState)
+export const mainReducer = (state, action) => ({
+  ...useReducerMovie(state, action),
+})
 
 const AppCineProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(mainReducer, initialState)
+
   return (
-    <AppCineFlixContext.Provider value={AppState}>
+    <AppCineFlixContext.Provider value={{ state, dispatch }}>
       {children}
     </AppCineFlixContext.Provider>
   )

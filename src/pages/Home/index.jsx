@@ -1,4 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+
+/* router */
+import { useNavigate } from 'react-router-dom'
 
 /* Axios */
 import axios from 'axios'
@@ -7,19 +10,18 @@ import axios from 'axios'
 import * as S from './styled'
 
 /* Components */
-import Header from '../../components/Header'
 import Cardmovie from '../../components/CardMovie'
-
-import { AppCineFlixContext } from '../../contexts/AppContext'
+import HeaderNavigation from '../../components/HeaderNavigation'
 
 const Home = () => {
   /* State */
-  const [movieSelect, setMovie] = useState({})
+
+  /* navigate */
+  const navigate = useNavigate()
 
   const [galleryMovies, setGalleryMovies] = useState(null)
 
   /* Data of Context */
-  const { movie } = useContext(AppCineFlixContext)
 
   useEffect(() => {
     axios
@@ -29,24 +31,16 @@ const Home = () => {
 
   return (
     <>
-      <Header />
       <main>
-        {movie.date}
         <S.Content>
-          <S.ContentHeader>
-            <S.ArrowAction src="/assets/image/arrow-left.svg" />
-            <S.ContentTitle>Selecione o filme</S.ContentTitle>
-            {movieSelect.id && (
-              <S.ArrowAction src="/assets/image/arrow-right.svg" />
-            )}
-          </S.ContentHeader>
           <S.ContentOptionsMovies>
+            <HeaderNavigation left={false} title="Selecione o filme" />
             {galleryMovies &&
               galleryMovies.map((item) => (
                 <Cardmovie
                   figureMovie={item.posterURL}
                   key={item.id}
-                  onClick={() => setMovie(item)}
+                  onClick={() => navigate(`/sessoes/${item.id}`)}
                 />
               ))}
           </S.ContentOptionsMovies>
