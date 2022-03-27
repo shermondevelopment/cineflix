@@ -7,6 +7,7 @@ import Header from './components/Header'
 /* Pages */
 import Home from './pages/Home'
 import Movies from './pages/Movies'
+import Seats from './pages/Seats'
 
 export const App = () => {
   return (
@@ -14,8 +15,8 @@ export const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/sessoes/:id" element={<Movies />} />
-        <Route path="/assentos/:id" element={<Movies />} />
+        <Route path="/session/:id" element={<Movies />} />
+        <Route path="/seats/:id" element={<Seats />} />
       </Routes>
     </>
   )

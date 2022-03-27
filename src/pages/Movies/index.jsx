@@ -15,7 +15,8 @@ import axios from 'axios'
 
 /** Components */
 import HeaderNavigation from '../../components/HeaderNavigation'
-import CardMovie from '../../components/CardMovie'
+import Button from '../../components/Button'
+import Footer from '../../components/Footer'
 
 const Movies = () => {
   const [movieAgends, setMovieAgends] = useState(null)
@@ -37,7 +38,7 @@ const Movies = () => {
       type: 'addTitle',
       payload: { title: movieAgends.title },
     })
-    navigate(`/assentos/${movieAgends.id}`)
+    navigate(`/seats/${movieAgends.id}`)
   }
 
   useEffect(() => {
@@ -61,32 +62,22 @@ const Movies = () => {
               <S.AgendOptionHours>
                 {days.showtimes.map((item) => {
                   return (
-                    <S.AgendHour
+                    <Button
                       key={item.id}
                       onClick={() => setDateMovie(item.name, days.weekday)}
                     >
                       {item.name}
-                    </S.AgendHour>
+                    </Button>
                   )
                 })}
               </S.AgendOptionHours>
             </S.AgendsOption>
           ))}
       </S.AgendsMovies>
-      <S.WatchMovieHeader>
-        <S.WatchMovieHeaderContent>
-          <CardMovie
-            width={64}
-            height={89}
-            figureMovie={movieAgends && movieAgends.posterURL}
-          />
-          <S.AgendInfoMovie>
-            <S.AgendOptionTitle>
-              {movieAgends && movieAgends.title}
-            </S.AgendOptionTitle>
-          </S.AgendInfoMovie>
-        </S.WatchMovieHeaderContent>
-      </S.WatchMovieHeader>
+      <Footer
+        figureMovie={movieAgends?.posterURL && movieAgends.posterURL}
+        title={movieAgends?.title && movieAgends.title}
+      />
     </S.Content>
   )
 }

@@ -40,7 +40,7 @@ const Home = () => {
                 <Cardmovie
                   figureMovie={item.posterURL}
                   key={item.id}
-                  onClick={() => navigate(`/sessoes/${item.id}`)}
+                  onClick={() => navigate(`/session/${item.id}`)}
                 />
               ))}
           </S.ContentOptionsMovies>

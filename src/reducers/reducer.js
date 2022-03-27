@@ -4,7 +4,7 @@ export const initialState = {
     hours: '',
     weekDay: '',
   },
-  tickets: [13, 23],
+  tickets: [],
   client: {
     name: '',
     cpf: '',

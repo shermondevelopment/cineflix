@@ -1,31 +1,9 @@
 import styled from 'styled-components'
 
-export const Content = styled.section`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-`
-export const AgendsMovies = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin-bottom: 200px;
-`
-
-export const AgendsOption = styled.div`
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`
-
 export const AgendOptionTitle = styled.span`
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
 `
-export const AgendOptionHours = styled.div``
 
 export const WatchMovieHeader = styled.div`
   width: 100%;
