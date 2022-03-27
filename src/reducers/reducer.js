@@ -3,6 +3,7 @@ export const initialState = {
     title: '',
     hours: '',
     weekDay: '',
+    date: '',
   },
   tickets: [],
   client: {
@@ -39,6 +40,11 @@ export const useReducerMovie = (state = initialState, action) => {
       return {
         ...state,
         client: { ...state.client, cpf: action.payload.cpf },
+      }
+    case 'addDates':
+      return {
+        ...state,
+        client: { ...state.client, date: action.payload.date },
       }
   }
   return state

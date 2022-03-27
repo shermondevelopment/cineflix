@@ -38,6 +38,11 @@ const Seats = () => {
     }
     dispatch({ type: 'addClient', payload: { name } })
     dispatch({ type: 'addCpf', payload: { cpf } })
+    dispatch({ type: 'addDates', payload: { date: movieSeats.day.date } })
+    axios.post(
+      `https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many`,
+      { ids: state.tickets, name, cpf }
+    )
     navigate(`/success`)
   }
 
