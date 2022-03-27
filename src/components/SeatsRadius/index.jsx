@@ -12,7 +12,14 @@ const SeatsRadius = ({ name, id, isAvailable }) => {
   const { state, dispatch } = useContext(AppCineFlixContext)
 
   const addAssents = (name) => {
-    dispatch({ type: 'addTickes', payload: { tickets: name } })
+    !state.tickets.includes(name) &&
+      dispatch({ type: 'addTickes', payload: { tickets: name } })
+    state.tickets.includes(name) &&
+      dispatch({
+        type: 'removeTickes',
+        payload: { tickets: name },
+      })
+    console.log(state)
   }
 
   useEffect(() => {

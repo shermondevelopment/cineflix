@@ -31,6 +31,13 @@ export const useReducerMovie = (state = initialState, action) => {
       }
     case 'addTickes':
       return { ...state, tickets: [...state.tickets, action.payload.tickets] }
+    case 'removeTickes':
+      return {
+        ...state,
+        tickets: [
+          ...state.tickets.filter((item) => item !== action.payload.tickets),
+        ],
+      }
     case 'addClient':
       return {
         ...state,
